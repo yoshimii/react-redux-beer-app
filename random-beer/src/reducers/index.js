@@ -1,12 +1,12 @@
 const initialState = {
-    beer: ''
+    beer: 'coors'
 }
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
         case 'GetBeer':
             return {
-                ...state
+                ...state.beer
             }
             default:
                  console.log('something broke')
