@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import hop from './hop.png';
 import './App.css';
 
-import RandomBeer from './components/RandomBeer';
+import Breweries from './components/Breweries';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <RandomBeer />
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={hop} className="App-logo" alt="logo" />
+        <Breweries />
       </header>
     </div>
   );
