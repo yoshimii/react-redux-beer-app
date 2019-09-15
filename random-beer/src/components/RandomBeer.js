@@ -7,3 +7,5 @@ export const RandomBeer = (props) => {
         </p>
     )
 }
+
+// 4. create component and export to App.js

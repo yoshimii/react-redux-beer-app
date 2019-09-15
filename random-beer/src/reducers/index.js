@@ -13,3 +13,5 @@ export const reducer = (state = initialState, action) => {
                  return state;
     }
 }
+
+// 3. create reducer with initial state and default case
