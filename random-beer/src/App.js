@@ -2,16 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { RandomBeer } from './components/RandomBeer';
+import RandomBeer from './components/RandomBeer';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello, I'm a component named <code>RandomBeer()</code> and I am here to serve you a: <RandomBeer />
-        </p>
+        <RandomBeer />
+
         <a
           className="App-link"
           href="https://reactjs.org"

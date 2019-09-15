@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { fetchBeer } from '../actions';
 
-export const RandomBeer = () => {
+const RandomBeer = ({ fetchBeer, beer }) => {
 
-        console.log();
+    useEffect( () => {
+        fetchBeer();
+    }, [fetchBeer])
+
+        console.log(beer);
     return (
-        <p>
-            This <code>(//This is from RandomBeer component.)</code> 
-        </p>
+        <div>
+            This {beer.map(item => {
+                return item.name
+            })} .<code>(//This is from RandomBeer component.)</code> 
+        </div>
     )
 }
 
@@ -16,9 +23,12 @@ export const RandomBeer = () => {
 
 const mapStateToProps = state => {
     return {
-        randombeer: state.beer
+        beer: state.beer
     }
 }
 
-connect(mapStateToProps, {})(RandomBeer);
+export default connect(
+    mapStateToProps,
+    { fetchBeer }
+)(RandomBeer);
 
