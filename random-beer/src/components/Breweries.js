@@ -10,10 +10,17 @@ const Breweries = ({ fetchBeer, searchBrewery, beer, fetching }) => {
 
     useEffect( () => {
         // fetchBeer(page);
-        searchBrewery(search)
+        return searchBrewery(search)
 
-    }, [ search])
+    },[search])
 
+    useEffect( () => {
+      return fetchBeer(page);
+        // searchBrewery(search)
+
+    }, [page])
+
+    console.log(search)
     if(fetching) {
         return <p>loading breweries</p>
     }
