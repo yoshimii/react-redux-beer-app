@@ -1,4 +1,4 @@
-import { FETCHING_BEER, FETCHED_BEER } from "../actions";
+import { FETCHING_BEER, FETCHED_BEER, SEARCHED_BEER } from "../actions";
 
 const initialState = {
     beer: [],
@@ -15,6 +15,12 @@ export const reducer = (state = initialState, action) => {
         case FETCHED_BEER:
             console.log('FETCHED_BEER: rendered from state')
             return {
+                ...state, beer: action.payload,
+                fetching: false
+            }
+        case SEARCHED_BEER:
+            console.log('SEARCHED_BEER: rendered from state')
+            return{
                 ...state, beer: action.payload,
                 fetching: false
             }

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchBeer } from '../actions';
+import { fetchBeer, searchBrewery } from '../actions';
 import Brewery from './Brewery';
+import SearchBar from './SearchBar';
 
-const Breweries = ({ fetchBeer, beer, fetching }) => {
+const Breweries = ({ fetchBeer, searchBrewery, beer, fetching }) => {
     const [ page, setPage ] = useState(1);
+    const [ search, setSearch] = useState('');
 
     useEffect( () => {
-        fetchBeer(page);
-        console.log(page)
-    }, [page])
+        // fetchBeer(page);
+        searchBrewery(search)
+
+    }, [ search])
 
     if(fetching) {
         return <p>loading breweries</p>
@@ -31,7 +34,20 @@ const Breweries = ({ fetchBeer, beer, fetching }) => {
         fetchBeer(page);
     }
 
+    const onChange = (e) => {
+        setSearch(e.target.value);        
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value)
+        // searchBrewery(search);
+        console.log(search)
+        setSearch('');
+    }
+
     return ([
+        <SearchBar search={search} onChange={onChange} onSubmit={handleSubmit}/>,
         <button onClick={prevPage}>Prev page</button>,
         <button onClick={nextPage}>Next page</button>,
         <div>
@@ -42,7 +58,7 @@ const Breweries = ({ fetchBeer, beer, fetching }) => {
                 city={item.city}
                 street={item.street}
                 type={item.brewery_type}
-                website={item.website}
+                website={item.website_url}
                 />
             })}  
         </div>
@@ -60,6 +76,6 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchBeer }
+    { fetchBeer, searchBrewery }
 )(Breweries);
 
